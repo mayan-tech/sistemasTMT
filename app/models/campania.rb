@@ -1,0 +1,2 @@
+class Campania < ApplicationRecord
+end

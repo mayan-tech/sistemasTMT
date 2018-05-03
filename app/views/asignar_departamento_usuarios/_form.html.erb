@@ -1,0 +1,38 @@
+<%= form_with(model: asignar_departamento_usuario, local: true) do |form| %>
+  <% if asignar_departamento_usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asignar_departamento_usuario.errors.count, "error") %> prohibited this asignar_departamento_usuario from being saved:</h2>
+
+      <ul>
+      <% asignar_departamento_usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :usuario_id %>
+    <%= form.number_field :usuario_id, id: :asignar_departamento_usuario_usuario_id %>
+  </div>
+
+
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, id: :asignar_departamento_usuario_user_id %>
+    </div>
+
+  <div class="field">
+    <%= form.label :departamento_id %>
+    <%= form.number_field :departamento_id, id: :asignar_departamento_usuario_departamento_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :empresa_id %>
+    <%= form.number_field :empresa_id, id: :asignar_departamento_usuario_empresa_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

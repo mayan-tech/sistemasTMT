@@ -1,0 +1,32 @@
+<%= form_with(model: asignacion_equipo, local: true) do |form| %>
+  <% if asignacion_equipo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asignacion_equipo.errors.count, "error") %> prohibited this asignacion_equipo from being saved:</h2>
+
+      <ul>
+      <% asignacion_equipo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :asignacion_equipo_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria_id %>
+    <%= form.number_field :categoria_id, id: :asignacion_equipo_categoria_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipo_id %>
+    <%= form.number_field :equipo_id, id: :asignacion_equipo_equipo_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

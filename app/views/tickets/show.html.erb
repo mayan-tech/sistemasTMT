@@ -1,0 +1,145 @@
+<div class="content-heading">SEGUIMIENTOS DE TICKET # <%= @ticket.id %>
+  <% if @ticket.estado == 0 then %>
+    <%=   link_to 'Asignar Ticket', tomar_path(:user_id => current_user.id,:ticket_id => @ticket.id), :class => 'pull-right btn btn-default' %> &nbsp;
+  <%  end %>
+    <%= link_to 'Regresar Ticket',tickets_path, :class => 'pull-right btn btn-default' %> &nbsp;
+  <% if @ticket.user_id == current_user.id  and @ticket.estado != 4 then %>
+      <%= link_to 'Cerrar Ticket',cerrar_path(:user_id => current_user.id,:ticket_id => @ticket.id), :class => 'pull-right btn btn-default' %> &nbsp;
+  <% end %>
+  <% if @ticket.estado != 0 and  @ticket.get_id_usuario_asignado(@ticket.id) == current_user.id  then %>
+      <%= link_to ' Solicitar Cerrar Ticket',"#" , :class => 'pull-right btn btn-default'%> &nbsp;
+  <% end %>
+   <small>Lista de seguientos</small>
+</div>
+<p id="notice"><%= notice %></p>
+
+<div class="table-grid todo">
+   <div class="col col-lg">
+      <div class="pr-lg">
+        <!-- START panel-->
+    <div id="panelDemo10" class="panel panel-info">
+       <div class="panel-heading">Descripción</div>
+       <div class="panel-body">
+
+        <p>
+          <span class="label bg-gray-lighter ph-lg mr text-sm visible-lg-inline">
+              <span class="text-muted">Solcitante</span>
+          </span>
+        </p>
+          <a href="#" class="align-middle text-bold link-unstyled">
+
+           <%= @ticket.user.first_name %> <%= @ticket.user.last_name %>
+         </a>
+         <p>
+         <span class="label bg-gray-lighter ph-lg mr text-sm visible-lg-inline">
+             <span class="text-muted">Categoria</span>
+         </span>
+           </p>
+         <a href="#" class="align-middle text-bold link-unstyled">
+
+           <%= @ticket.category.name %>
+        </a>
+
+        <p>
+        <span class="label bg-gray-lighter ph-lg mr text-sm visible-lg-inline">
+            <span class="text-muted">Asunto</span>
+        </span>
+         </p>
+        <a href="#" class="align-middle text-bold link-unstyled">
+
+          <%= @ticket.asunto %>
+       </a>
+
+       <p>
+       <span class="label bg-gray-lighter ph-lg mr text-sm visible-lg-inline">
+           <span class="text-muted">Descripción</span>
+       </span>
+       </p>
+       <a href="#" class="align-middle text-bold link-unstyled">
+
+         <%= @ticket.descripcion %>
+      </a>
+
+       </div>
+
+
+   <% if @ticket.estado != 0 and (@ticket.get_id_usuario_asignado(@ticket.id) == current_user.id || @ticket.user_id == current_user.id) then %>
+       <%= form_for(@record) do |f| %>
+
+           <div class="form-group">
+               <%= f.label :seguimiento  %>
+               <%= f.text_area :mensaje, class: 'form-control ' %>
+
+
+
+               <%= f.hidden_field :user_id, value:"#{current_user.id}" %>
+               <%= f.hidden_field :ticket_id, value:"#{@ticket.id}" %>
+
+               <%= f.submit "Agregar seguimiento", :class => 'btn btn-primary btn-block' %>
+           </div>
+         <% end %>
+         </p>
+         </br>
+   <% end %>
+
+           </div>
+    <!--   <div class="panel-footer">Panel Footer</div>-->
+    </div>
+    <!-- END panel-->
+
+  </div>
+<div class="col todo-item-list">
+      <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group">
+         <div class="todo-item panel panel-default todo-complete">
+            <div class="panel-heading">
+
+              <% if @ticket_detalles.nil?  %>
+
+              <% else %>
+
+                     <% @ticket_detalles.each do |detalle| %>
+                      <!-- START list group-->
+                       <div data-height="180" data-scrollable="" class="list-group">
+                                  <!-- START list group item-->
+                                  <a href="#" class="list-group-item">
+                                     <div class="media-box">
+                                        <div class="pull-left">
+                                          <% if user_signed_in? %>
+                                           <%= image_tag gravatar_url(detalle.user.email, 64), alt: "", width: "60", height:"60",class:"media-box-object img-circle thumb32" %>
+                                          <% end %>
+
+                                        </div>
+                                        <div class="media-box-body clearfix">
+                                           <small class="pull-right"><%= detalle.created_at.strftime("%B %e, %Y at %I:%M %p") %></small>
+                                           <strong class="media-box-heading text-primary">
+                                              <span class="circle circle-success circle-lg text-left"></span><%= detalle.get_obtener_usuario_nombres(detalle.user_id) %></strong>
+                                           <p class="mb-sm">
+                                              <small><%= detalle.mensaje %></small>
+                                           </p>
+                                        </div>
+                                     </div>
+                                  </a>
+                          <!-- END list group item-->
+                            <% end %>
+                          <% end %>
+                   </div>
+
+                 </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+               <div class="panel-body">
+                  <p>
+                     <span>Pellentesque convallis mauris eu elit imperdiet quis eleifend quam aliquet.</span>
+                  </p>
+               </div>
+            </div>
+         </div>
+
+
+  <!--    <p class="text-right">
+         <span>1 Completed</span>-
+         <span>2 Pending</span>
+      </p>-->
+      <!-- end ngIf: items.length > 0-->
+      </div>
+   </div>
+</div>

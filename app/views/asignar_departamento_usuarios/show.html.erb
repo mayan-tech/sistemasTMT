@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @asignar_departamento_usuario.usuario_id %>
+</p>
+
+<p>
+  <strong>Departamento:</strong>
+  <%= @asignar_departamento_usuario.departamento_id %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @asignar_departamento_usuario.empresa_id %>
+</p>
+
+<%= link_to 'Edit', edit_asignar_departamento_usuario_path(@asignar_departamento_usuario) %> |
+<%= link_to 'Back', asignar_departamento_usuarios_path %>

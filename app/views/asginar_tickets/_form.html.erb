@@ -1,0 +1,27 @@
+<%= form_with(model: asginar_ticket, local: true) do |form| %>
+  <% if asginar_ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asginar_ticket.errors.count, "error") %> prohibited this asginar_ticket from being saved:</h2>
+
+      <ul>
+      <% asginar_ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :asginar_ticket_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ticket_id %>
+    <%= form.text_field :ticket_id, id: :asginar_ticket_ticket_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

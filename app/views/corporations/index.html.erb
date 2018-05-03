@@ -1,0 +1,48 @@
+<h3>CORPORACIONES
+   <small>Lista de Corporaciones en el sistema.</small>
+</h3>
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+   <!-- START DATATABLE 1 -->
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               Lista |
+               <small>Corporaciones</small>
+            </div>
+            <div class="panel-body">
+              <p id="notice"><%= notice %></p>
+               <table id="datatable1" class="table table-striped table-hover">
+                  <thead>
+
+                     <tr>
+                       <th  class="sort-numeric">Name</th>
+
+                       <th colspan="3">Acciones</th>
+                  </thead>
+                  <tbody>
+                    <% @corporations.each do |corporation| %>
+                      <tr>
+                        <td ><%= corporation.name %></td>
+                        <td colspan="3"><%= link_to 'Mostrar', corporation , class:'btn btn-info' %>
+                        <%= link_to 'Editar', edit_corporation_path(corporation), class:'btn btn-green' %>
+                        <%= link_to 'Mostrar', corporation, class:'btn btn-danger', method: :delete, data: { confirm: '¿ Esta seguro de eliminar ?' } %></td>
+                      </tr>
+                    <% end %>
+
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+                    <%= link_to 'Nueva Corporacion', new_corporation_path, class: 'btn btn-primary' %>
+              </div>
+
+              </div>
+              <!-- END DATATABLE 1 -->
+
+
+         </div>
+
+    </div>

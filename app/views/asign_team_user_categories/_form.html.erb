@@ -1,0 +1,50 @@
+<%= form_with(model: asign_team_user_category, local: true) do |form| %>
+  <% if asign_team_user_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asign_team_user_category.errors.count, "error") %> prohibited this asign_team_user_category from being saved:</h2>
+
+      <ul>
+      <% asign_team_user_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Usuario:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:user_id, User.all, :id, :first_name, {:prompt => 'Seleccionar usuario', :selected => @asign_team_user_category.user_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Categoria:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:category_id, Category.all, :id, :name, {:prompt => 'Seleccionar categoria', :selected => @asign_team_user_category.category_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Equipo de trabajo:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:team_id, Team.all, :id, :name, {:prompt => 'Seleccionar equipo', :selected => @asign_team_user_category.team_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @asign_departament_user.user_id %>
+</p>
+
+<p>
+  <strong>Departament:</strong>
+  <%= @asign_departament_user.departament_id %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @asign_departament_user.company_id %>
+</p>
+
+<%= link_to 'Edit', edit_asign_departament_user_path(@asign_departament_user) %> |
+<%= link_to 'Back', asign_departament_users_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asginar Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Ticket</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asginar_tickets.each do |asginar_ticket| %>
+      <tr>
+        <td><%= asginar_ticket.user_id %></td>
+        <td><%= asginar_ticket.ticket_id %></td>
+        <td><%= link_to 'Show', asginar_ticket %></td>
+        <td><%= link_to 'Edit', edit_asginar_ticket_path(asginar_ticket) %></td>
+        <td><%= link_to 'Destroy', asginar_ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asginar Ticket', new_asginar_ticket_path %>

@@ -1,0 +1,50 @@
+<%= form_with(model: asign_departament_user, local: true) do |form| %>
+  <% if asign_departament_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asign_departament_user.errors.count, "error") %> prohibited this asign_departament_user from being saved:</h2>
+
+      <ul>
+      <% asign_departament_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Usuario:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:user_id, User.all, :id, :first_name, {:prompt => 'Seleccionar usuario', :selected => @asign_departament_user.user_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Departamento:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:departament_id, Departament.all, :id, :name, {:prompt => 'Seleccionar departamento', :selected => @asign_departament_user.departament_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label 'Empresa:', class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.collection_select(:company_id, Company.all, :id, :name, {:prompt => 'Seleccionar empresa', :selected => @asign_departament_user.company_id},{:class =>'form-control'}) %>
+
+      </div>
+
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asignar Departamento Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Departamento</th>
+      <th>Empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asignar_departamento_usuarios.each do |asignar_departamento_usuario| %>
+      <tr>
+        <td><%= asignar_departamento_usuario.user.nombres %> <%= asignar_departamento_usuario.user.apellidos %></td>
+        <td><%= asignar_departamento_usuario.departamento.nombre %></td>
+        <td><%= asignar_departamento_usuario.empresa.nombre %></td>
+        <td><%= link_to 'Show', asignar_departamento_usuario %></td>
+        <td><%= link_to 'Edit', edit_asignar_departamento_usuario_path(asignar_departamento_usuario) %></td>
+        <td><%= link_to 'Destroy', asignar_departamento_usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asignar Departamento Usuario', new_asignar_departamento_usuario_path %>

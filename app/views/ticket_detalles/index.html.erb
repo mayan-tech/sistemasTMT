@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ticket Detalles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Ticket</th>
+      <th>Mensaje</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ticket_detalles.each do |ticket_detalle| %>
+      <tr>
+        <td><%= ticket_detalle.user_id %></td>
+        <td><%= ticket_detalle.ticket_id %></td>
+        <td><%= ticket_detalle.mensaje %></td>
+        <td><%= link_to 'Show', ticket_detalle %></td>
+        <td><%= link_to 'Edit', edit_ticket_detalle_path(ticket_detalle) %></td>
+        <td><%= link_to 'Destroy', ticket_detalle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ticket Detalle', new_ticket_detalle_path %>

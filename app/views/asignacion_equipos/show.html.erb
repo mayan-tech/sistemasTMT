@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @asignacion_equipo.user.nombres %> <%= @asignacion_equipo.user.apellidos %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @asignacion_equipo.categoria.nombre %>
+</p>
+
+<p>
+  <strong>Equipo:</strong>
+  <%= @asignacion_equipo.equipo.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_asignacion_equipo_path(@asignacion_equipo) %> |
+<%= link_to 'Back', asignacion_equipos_path %>

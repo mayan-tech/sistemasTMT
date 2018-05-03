@@ -1,0 +1,82 @@
+<%= form_with(model: corporation, local: true) do |form| %>
+  <% if corporation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(corporation.errors.count, "error") %> prohibited this corporation from being saved:</h2>
+
+      <ul>
+      <% corporation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <div class="form-group">
+
+        <%= form.label :name , class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+        <%= form.text_field :name, id: :corporation_name, class: 'form-control ' %>
+
+      </div>
+
+
+    </div>
+  </fieldset>
+  <fieldset>
+  <div class="form-group">
+
+      <%= form.label :description , class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+      <%= form.text_field :description, id: :corporation_description, class: 'form-control ' %>
+
+    </div>
+
+
+  </div>
+</fieldset>
+<fieldset>
+<div class="form-group">
+
+    <%= form.label :phone , class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :phone, id: :corporation_phone, class: 'form-control ' %>
+
+  </div>
+
+
+</div>
+</fieldset>
+<fieldset>
+<div class="form-group">
+
+    <%= form.label :nit , class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :nit, id: :corporation_nit, class: 'form-control ' %>
+
+  </div>
+
+
+</div>
+</fieldset>
+<fieldset>
+<div class="form-group">
+
+    <%= form.label :social_name , class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+    <%= form.text_field :social_name, id: :corporation_social_name, class: 'form-control ' %>
+
+    </div>
+
+
+</div>
+</fieldset>
+
+<fieldset>
+  <div class="actions">
+    <%= link_to 'Regresar', corporations_path, class: 'btn btn-sm btn-default' %>
+    <%#= link_to 'Mostrar', @company , class: 'btn btn-sm btn-default' %>
+    <%= form.submit class: 'btn btn-sm btn btn-primary' %>
+
+  </div>
+</fieldset>
+<% end %>

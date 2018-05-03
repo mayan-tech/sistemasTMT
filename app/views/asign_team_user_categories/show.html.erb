@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @asign_team_user_category.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @asign_team_user_category.category_id %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @asign_team_user_category.team_id %>
+</p>
+
+<%= link_to 'Edit', edit_asign_team_user_category_path(@asign_team_user_category) %> |
+<%= link_to 'Back', asign_team_user_categories_path %>

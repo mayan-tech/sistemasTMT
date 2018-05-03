@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asign Team User Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Category</th>
+      <th>Team</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asign_team_user_categories.each do |asign_team_user_category| %>
+      <tr>
+        <td><%= asign_team_user_category.user.first_name %> <%= asign_team_user_category.user.last_name %></td>
+        <td><%= asign_team_user_category.category.name %></td>
+        <td><%= asign_team_user_category.team.name %></td>
+        <td><%= link_to 'Show', asign_team_user_category %></td>
+        <td><%= link_to 'Edit', edit_asign_team_user_category_path(asign_team_user_category) %></td>
+        <td><%= link_to 'Destroy', asign_team_user_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asign Team User Category', new_asign_team_user_category_path %>
